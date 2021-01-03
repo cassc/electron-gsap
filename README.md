@@ -4,7 +4,8 @@ A demo using GSAP (greensock animation) in Electron with ClojureScript
 
 # Resources:
 
-* [GSP V3 doc](https://greensock.com/docs/v3)
+* [GSAP V3 doc](https://greensock.com/docs/v3)
+* [GSAP get started](https://greensock.com/get-started/)
 * *SVG Animations* by Sarah Drasner
 
 # Demo
@@ -43,7 +44,7 @@ A demo using GSAP (greensock animation) in Electron with ClojureScript
       ;; use label to create animation for a group of objects
       (add "burst")
       (fromTo b1 (clj->js {:x 50 :y 50 :background-color :red}) (clj->js {:opacity 0.2}) "burst")
-      ;; add delay when animating an element
+      ;; use `+=` to add delay when animating an element
       (fromTo b2 (clj->js {:x (- w 50) :y 50 :background-color :green}) (clj->js {:opacity 0.2}) "burst+=0.2")
       (fromTo b3 (clj->js {:x (/ w 2) :y (- h 150) :background-color :blue}) (clj->js {:opacity 0.2}) "burst"))
   tl)
