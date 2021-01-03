@@ -1,0 +1,97 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  // hide cursor
+  // cursor: none !important;
+}
+
+html {
+  // This defines what 1rem is
+  font-size:  100%; // 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $color-white;
+  height: 240px;
+  overflow-y: hidden;
+  background-color: $color-background;
+  color: $color-text;
+}
+
+
+
+
+/* ::selection { */
+/*   background-color: var(--color-primary); */
+/*   color: $color-white; */
+/* } */
+
+// https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.hide{
+  transition: height 100ms 100ms, opacity 100ms 0ms;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show{
+  opacity:1;
+  visibility: visible;
+  transition: height 100ms 100ms, opacity 100ms 0ms;
+}
+
+.clickable{
+  cursor:pointer;
+}
+
+.fadein{
+  animation: fadeIn .8s linear;
+}
+
+.icon__tiny{
+  width: .8rem;
+  height: .8rem;
+}
+
+.warning{
+  font-weight:bold;
+  color: $color-red;
+}
+
+.hide-on-phone{
+  @include respond(phone){
+    display:none;
+  }
+}
+
+/* Scrollbar styles with mouse, for scroll bar with keyboard, see .home__tab in home.scss  */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  // border: 1px solid black; // track background
+  // border-radius: 10px;
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-active-highlight; // actual track color
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;   // track background
+}
