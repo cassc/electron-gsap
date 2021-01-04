@@ -22,6 +22,8 @@
      [v/ball "ball2" ""]
      [v/ball "ball3" ""]
 
+     [v/boxes]
+
      [v/star]
      ]))
 

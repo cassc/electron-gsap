@@ -23,6 +23,12 @@
 (defn ball [id label]
   [:div.ball.hidden {:id id} label])
 
+(defn boxes []
+  [:div.box-wrapper
+   (doall
+     (for [i (range 20)]
+       [:div.box {:key i}]))])
+
 (defn star []
   [:div.star.hidden
    [:svg

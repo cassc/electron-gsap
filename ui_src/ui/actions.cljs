@@ -25,6 +25,11 @@
   (let [tl   (js/gsap.timeline (clj->js {:defaults {:duration 1}}))
         star ".star"]
     (.. tl
+        ;; Left and Top are not the same thing as X and Y.
+        ;;
+        ;; X,Y are an alias to the translate() transform. So, if you are setting
+        ;; you element at left:300, top:200, it is effectively sitting at x:0,
+        ;; y:0
         (fromTo star (clj->js {:scale 0.5 :autoAlpha 0 :x 300 :y 300}) (clj->js {:autoAlpha 1 :fill :cyan :rotation (* 360 3) :scale 1}))
         (to star (clj->js {:scale 0.5 :autoAlpha 0 :rotation 360 :duration 0.01}))
         )
@@ -66,6 +71,23 @@
         (fromTo b3 (clj->js {:x (/ w 2) :y (- h 150) :background-color :blue}) (clj->js {:opacity 0.2}) "burst"))
     tl))
 
+(defn- boxes-animation []
+  (let [tl (js/gsap.timeline)
+        el ".box"]
+    (.. tl
+        (fromTo el (clj->js {:scale 1}) (clj->js {:scale   0.5
+                                                  :y       50
+                                                  :x       50
+                                                  ;; Use stagger to create interesting visualization for a group of objects
+                                                  ;; https://greensock.com/docs/v3/Staggers
+                                                  :stagger {:each 0.1
+                                                            :from "center"
+                                                            :grid "auto"
+                                                            :ease "power4.easeInOut"
+                                                            }}))
+        )
+    tl))
+
 (defn master-animation []
   (let [tl (js/gsap.timeline (clj->js {;; number of loops of animations, -1 means infinite loop
                                        :repeat      -1
@@ -75,8 +97,11 @@
         ;; timeline can be nested
         (add (ball-animation) "balls")
         (add (star-animation) "star")
+        (add (boxes-animation) "boxes")
+
+
         ;; use `seek` to go directly to specific scene
-        (seek "balls+=0.5")
+        ;; (seek "balls+=0.5")
         )
 
     tl))
