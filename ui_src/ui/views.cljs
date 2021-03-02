@@ -20,14 +20,32 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; views
+
+
+(def num_boxes 60)
 (defn ball [id label]
   [:div.ball.hidden {:id id} label])
 
 (defn boxes []
   [:div.box-wrapper
    (doall
-     (for [i (range 20)]
-       [:div.box {:key i}]))])
+    (for [i (range num_boxes)]
+      [:div.box {:key i}]))])
+
+(defn video-slides []
+  (let [meta {:controls false
+              :auto-play true
+              :loop true}]
+    [:div.video-wrapper
+     (doall
+      (for [i (:video-id @db/app-state)]
+        (do
+          (t/info "Rendering video " i)
+          ^{:key (str "video" i)}
+          [:video.video (assoc meta
+                               :id (str "v" i)
+                               :src (nth db/all-videos i)
+                               :style {:transform ""})])))]))
 
 (defn star []
   [:div.star.hidden

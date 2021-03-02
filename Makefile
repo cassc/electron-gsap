@@ -8,7 +8,8 @@ clean:
 	lein clean
 build:  sass
 	lein do clean, cljsbuild once frontend-release, cljsbuild once electron-release
-	electron-packager . electron-app --platform=linux  --arch=x64 --electron-version=6.0.12 --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/
-	electron-packager . electron-app --platform=win32  --arch=x64 --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/
+	electron-packager . electron-app --platform=linux --arch=armv7l  --electron-version=6.0.12 --overwrite
+	electron-packager . electron-app --platform=linux  --arch=x64 --electron-version=6.0.12 #--overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/
+	#	electron-packager . electron-app --platform=win32  --arch=x64 --overwrite #--download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/
 dev-sass:
 	npm run watch:sass

@@ -16,8 +16,8 @@ html {
 body {
   box-sizing: border-box;
   background-color: $color-white;
-  height: 240px;
-  overflow-y: hidden;
+  // height: 240px;
+  // overflow-y: hidden;
   background-color: $color-background;
   color: $color-text;
 }
@@ -77,21 +77,25 @@ input::-webkit-inner-spin-button {
 
 /* Scrollbar styles with mouse, for scroll bar with keyboard, see .home__tab in home.scss  */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  // width: 6px;
+  // height: 6px;
+    display:none;
 }
 
 ::-webkit-scrollbar-track {
   // border: 1px solid black; // track background
   // border-radius: 10px;
-  background: black;
+  // background: black;
+  display:none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-active-highlight; // actual track color
-  border-radius: 10px;
+  // background: $color-active-highlight; // actual track color
+  // border-radius: 10px;
+  display:none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: black;   // track background
+  // background: black;   // track background
+  display:none;
 }

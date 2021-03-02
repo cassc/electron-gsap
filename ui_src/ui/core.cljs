@@ -14,17 +14,16 @@
 
 (defn root-component []
   (fn []
-    [:div.background
-     [:button {:on-click #(a/toggle-animation)} (if (:paused? @db/timeline-store)
-                                                  "Start animation"
-                                                  "Pause animation")]
-     [v/ball "ball1" ""]
-     [v/ball "ball2" ""]
-     [v/ball "ball3" ""]
-
-     [v/boxes]
-
-     [v/star]
+    [:div
+     (when-not (:started @db/app-state)
+       [:div.controls
+        [:button {:on-click #(a/start-video-animation!)} "Start"]])
+     [v/video-slides]
+     ;; [v/ball "ball1" ""]
+     ;; [v/ball "ball2" ""]
+     ;; [v/ball "ball3" ""]
+     ;[cljsjs/anime "3.0.1-0"f; [v/boxes]
+     ;; [v/star]
      ]))
 
 (defn mount-components []

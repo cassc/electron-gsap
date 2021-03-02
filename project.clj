@@ -11,6 +11,8 @@
                  [ring/ring-core "1.7.1"]
                  [com.taoensso/timbre "4.10.0"]
                  [nilenso/wscljs "0.2.0"]
+                 [org.clojure/core.async "1.3.610"]
+                 [cljsjs/anime "3.0.1-0"]
                  [alandipert/storage-atom "1.2.4"]
                  [com.lucasbradstreet/cljs-uuid-utils "1.0.2"]]
   :plugins [[lein-cljsbuild "1.1.7"]
@@ -22,8 +24,7 @@
                                     "resources/public/js/ui-out"]
   :cljsbuild
   {:builds
-   [
-    {:source-paths ["ui_src" "dev_src"]
+   [{:source-paths ["ui_src" "dev_src"]
      :id           "frontend-dev"
      :compiler     {:output-to      "resources/public/js/ui-core.js"
                     :output-dir     "resources/public/js/ui-out"

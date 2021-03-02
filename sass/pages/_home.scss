@@ -1,4 +1,8 @@
 body{
+    /* background-image: url("https://store-images.s-microsoft.com/image/apps.39873.14451776357165671.f5eb53ec-970d-496a-ba82-d5f797dc9def.dfe0113d-3449-4bd6-96e6-7cd323264517?mode=scale&q=90&h=1080&w=1920"); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    position: relative;
 }
 
 .hidden{
@@ -28,7 +32,6 @@ body{
     height: 100vh;
     width: 100vw;
     position: absolute;
-    border-bottom: 50px solid grey;
 }
 
 .box-wrapper{
@@ -47,4 +50,34 @@ body{
         margin-left: 1rem;
         margin-bottom: 1rem;
     }
+}
+
+
+.video-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200vw;
+    height: 100vh;
+    margin: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    video.video {
+        position: absolute;
+        top: 0;
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        z-index: 50;
+        &:first-child{
+            z-index: 60;
+        }
+    }
+}
+
+.controls{
+    position: absolute;
+    z-index: 100;
 }

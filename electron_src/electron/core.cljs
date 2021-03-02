@@ -11,10 +11,10 @@
 (defn init-browser []
   (let [window (browser-window.
                  (clj->js {
-                           :width          (* 320 zoom)
-                           :height         (* 240 zoom)
+                           :width         1920
+                           :height        1080
                            :frame          false
-                           :fullscreen     false
+                           :fullscreen     true
                            :webPreferences {:nodeIntegration true}}))]
     (reset! main-window window))
   ;; Path is relative to the compiled js file (main.js in our case)

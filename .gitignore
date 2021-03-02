@@ -8,3 +8,4 @@ figwheel_server.log
 resources/public/css/main.css
 resources/public/css/
 /.rebel_readline_history
+.lsp/

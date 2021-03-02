@@ -1,8 +1,6 @@
 (ns ui.db
   (:require
-   [taoensso.timbre :as t]
    [alandipert.storage-atom :refer [local-storage]]
-   [clojure.string :as s]
    [reagent.core :as reagent :refer [atom]]))
 
 (defonce sys-config-store (local-storage
@@ -14,11 +12,18 @@
                                    })
                             :sys-config-store))
 
-(defn- set-sys-config! [config]
-  (swap! sys-config-store merge config))
+(defonce all-videos ["http://localhost:6778/pexels-low-0.mp4"
+                     "http://localhost:6778/pexels-low-1.mp4"
+                     "http://localhost:6778/pexels-low-2.mp4"])
 
-(defonce app-state (atom {:box-x 100}))
+(defonce views [:boxes :video-slides])
+
+(defonce app-state (atom {:box-x 100
+                          :video-id [0 1]
+                          :current-view :video-slides}))
+
 (defonce active-popup (atom nil))
+
 (defonce rotate-deg-store (atom 0))
 
 (defonce timeline-store (atom {:tl nil :paused? true}))
